@@ -1,14 +1,16 @@
 
 import './App.css';
+import GuGuDan from './components/game01/GuGuDan/GuGuDan';
 import LikeButton from './components/game01/LikeButton';
 
 function App() {
   return (
     <div>
-      <LikeButton/>
-      <LikeButton/>
-      <LikeButton/>
-      <LikeButton/>
+      <GuGuDan/>
+
+      <GuGuDan/>
+
+      <GuGuDan/>
     </div>
   );
 }
