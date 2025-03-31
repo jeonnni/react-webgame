@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const GuGuDan = () => {
     const [first, setFirst] = useState(Math.ceil(Math.random() * 9));
     const [second, setSecond] = useState(Math.ceil(Math.random() * 9));
     const [value, setValue] = useState("");
     const [result, setResult] = useState("");
+
+    const inputRef = useRef(null);
 
     // console.log(value + "value");
 
@@ -19,9 +21,12 @@ const GuGuDan = () => {
             setSecond(Math.ceil(Math.random() * 9)); 
             setValue(""); //입력 필드 초기화
 
+            inputRef.current.focus();
         } else {
             setResult("오답! 다시 시도하세요.");
             setValue(""); //입력 필드 초기화 
+
+            inputRef.current.focus();
         }
     }
 
@@ -35,6 +40,7 @@ const GuGuDan = () => {
 
             <form onSubmit={onSubmit}>
                 <input 
+                    ref={inputRef}
                     type="number" 
                     value={value} 
                     onChange={(e)=>setValue(e.target.value)} 
