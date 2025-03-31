@@ -7,10 +7,6 @@ function App() {
   return (
     <div>
       <GuGuDan/>
-
-      <GuGuDan/>
-
-      <GuGuDan/>
     </div>
   );
 }
