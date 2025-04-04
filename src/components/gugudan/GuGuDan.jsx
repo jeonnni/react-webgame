@@ -5,11 +5,11 @@ const GuGuDan = () => {
     const [second, setSecond] = useState(Math.ceil(Math.random() * 9));
     const [value, setValue] = useState("");
     const [result, setResult] = useState("");
-
     const inputRef = useRef(null);
 
+
     const onChangeInput = (e) => {
-        console.log(e.target.value);
+        // console.log(e.target.value);
         setValue(e.target.value);
     }
 
@@ -17,10 +17,8 @@ const GuGuDan = () => {
         e.preventDefault(); //폼 제출 시 새로고침 방지
 
         if(parseInt(value) === first * second){
-
-            const quizResult = first * second;
-            setResult(`${quizResult} , 정답!`);
-            setFirst(Math.ceil(Math.random() * 9)); // 새 문제 출제
+            setResult(`정답 : ${value}`);
+            setFirst(Math.ceil(Math.random() * 9));
             setSecond(Math.ceil(Math.random() * 9)); 
             setValue(""); //입력 필드 초기화
 

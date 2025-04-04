@@ -1,12 +1,14 @@
 
 import './App.css';
-import GuGuDan from './components/game01/GuGuDan/GuGuDan';
-import LikeButton from './components/game01/LikeButton';
+import GuGuDan from './components/gugudan/GuGuDan';
+import LikeButton from './components/game-test/LikeButton';
+import WordRelay from './components/wordRelay/WordRelay';
+
 
 function App() {
   return (
     <div>
-      <GuGuDan/>
+      <WordRelay/>
     </div>
   );
 }
