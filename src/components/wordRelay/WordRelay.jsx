@@ -12,20 +12,13 @@ const WordRelay = () => {
     const onSubmitForm = (e) => {
         e.preventDefault();
 
-        setResult(value);
-        inputRef.current.focus();
-
-        console.log(word[word.length - 1] + "!!!") // 기존 단어의 마지막 글자
-        console.log(value[0] + "!!!") // 입력한 단어의 첫 글자
-        // 기존 단어의 마지막 글자랑 내가  입력한 단어의 첫 글자가 같으면 실행
+        // 기존 단어의 마지막 글자랑 내가 입력한 단어의 첫 글자가 같으면 실행
         if(word[word.length - 1] === value[0]){
             setWord(value);
             setResult('딩동댕');
             setValue('');
-
             inputRef.current.focus();
         }else{
-
             setResult('땡');
             setValue('');
             inputRef.current.focus();
@@ -33,8 +26,6 @@ const WordRelay = () => {
     }
 
     const onChangeInput = (e) => {
-        console.log(e.target.value);
-
         setValue(e.target.value);
     }
 

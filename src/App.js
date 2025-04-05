@@ -1,8 +1,6 @@
 
 import './App.css';
-import GuGuDan from './components/gugudan/GuGuDan';
-import LikeButton from './components/game-test/LikeButton';
-import WordRelay from './components/wordRelay/WordRelay';
+import WordRelay from './components/wordrelay/WordRelay';
 
 
 function App() {
