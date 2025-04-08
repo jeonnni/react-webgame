@@ -3,17 +3,21 @@ import { Component } from "react";
 
 class Try extends Component {
     render(){
-        // const {value,index} = this.props;
+        const { tryInfo } = this.props;
+
+        if(!tryInfo){
+            return(
+                <li>
+                    <div>오류</div>
+                </li>
+            );
+        }
         return (
             <li>
-                <b>{this.props.value.fruit}</b> - {this.props.index}
-                <div>컨텐츠1 </div>
-                <div>컨텐츠2</div>
-                <div>컨텐츠3</div>
-                <div>컨텐츠4</div>
-                <div>컨텐츠5</div>
+                <div>{tryInfo.try}</div>
+                <div>{tryInfo.result}</div>
             </li>
-        )
+        );
     }
 }
 

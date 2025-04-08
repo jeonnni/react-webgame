@@ -17,31 +17,42 @@ function getNumbers(){
 const NumberBaseball = () => {
     const [result, setResult] = useState('');
     const [value, setValue] = useState(''); 
-    const [tries, setTries] = useState('');
+    const [tries, setTries] = useState([]);  
     const [answer, setAnswer] = useState(getNumbers());
 
+    
 
     const onSubmitForm = (e) => {
         e.preventDefault();
 
         if(value === answer.join()){
+            setResult('홈런!')
+            setTries([...tries, {
+                try:value, result:"홈런!"
+            }])
+        } else {
+            const answerArray = value.split('').map((v) => parseInt(v));
 
-        }else{
+            let strike = 0;
+            let ball = 0;
 
+            for(let i=0; i<4; i+=1){
+                if(answerArray[i] === answer[i]){
+                    strike +=1;
+                }else if(answer.includes(answerArray[i])){
+                    ball+=1;
+                }
+            }
+
+            setTries([...tries, { try: value, result: `${strike} 스트라이크, ${ball} 볼입니다` }]);
+
+            setValue('');
         }
     }
     const onChangeInput = (e) => {
         console.log(answer);
-        value(e.target.value);
+        setValue(e.target.value);
     }
-
-    const fruits = [
-        {fruit:'사과',taste:'맛있다'},
-        {fruit:'딸기',taste:'맛없다'},
-        {fruit:'참외',taste:'달다'},
-        {fruit:'배',taste:'시다'},
-        {fruit:'귤',taste:'달다'},
-    ]
 
 
     return (
@@ -53,8 +64,8 @@ const NumberBaseball = () => {
             </form>
             <div>시도 : {tries.length}</div>
             <ul>
-                {fruits.map((item, idx)=>
-                    <Try key={item.fruit + item.taste} value={item} index={idx}/>
+                {tries.map((v, i)=>
+                    <Try key={`${i+1} 차 시도 : `} tryInfo={v}/>
                 )}
             </ul>
 
