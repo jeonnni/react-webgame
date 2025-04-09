@@ -1,12 +1,12 @@
 
 import './App.css';
-import NumberBaseball from './components/number-baseball/NumberBaseball';
+import RenderTest from './components/game-test/RenderTest';
 
 
 function App() {
   return (
     <div>
-      <NumberBaseball/>
+      <RenderTest/>
     </div>
   );
 }

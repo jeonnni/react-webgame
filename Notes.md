@@ -40,3 +40,44 @@ this.state.liked = true; // 잘못된 접근
 
 컴포넌트를 분리하면 재사용성과 가독성이 높아지고, 유지보수와 협업이 쉬워진다
 코드가 길어질 것 싶으면 컴포넌트를 분리하는 것이 좋음
+
+
+<br/>
+
+### 🔄 리액트 컴포넌트 렌더링이 발생하는 조건
+
+렌더링은 다음 세 가지 중 하나가 변경될 때 발생한다
+
+1. **state 변경**
+2. **props 변경**
+3. **부모 컴포넌트 리렌더링 시 자식 컴포넌트도 리렌더링**
+
+렌더링이 발생하면 **컴포넌트가 다시 그려지며 "반짝임" 현상**이 생길 수 있다
+
+불필요한 컴포넌트까지 렌더링되면 **성능 저하**로 이어질 수 있기 때문에 주의가 필요하다
+
+### ⚠️ 렌더링 최적화 필요성
+
+- 변화가 없는 상태에서도 `setState()`를 호출하면 렌더링이 발생한다
+
+```
+    onClickBtn = () => {
+        this.setState({}); //실제 데이터 변화 없이도 렌더링 발생
+    }
+```
+
+### ✅ `shouldComponentUpdate`로 렌더링 제어하기
+
+리액트 클래스 컴포넌트에서 `shouldComponentUpdate()` 메서드를 오버라이드하면
+
+렌더링 여부를 개발자가 직접 결정할 수 있다
+
+```
+    shouldComponentUpdate(nextprops, nextState, nextContext){
+        //this.state.counter 현재 카운터 nextState.counter 미래 바뀌는 카운터
+        if(this.state.counter !== nextState.counter){
+            return true; // 상태가 바뀌었으므로 렌더링
+        }
+        return false; // 상태 변화 없으므로 렌더링 하지 않음
+    }
+```
