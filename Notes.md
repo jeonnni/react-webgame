@@ -66,7 +66,7 @@ this.state.liked = true; // 잘못된 접근
     }
 ```
 
-### ✅ `shouldComponentUpdate`로 렌더링 제어하기
+### 방법 1 ✅ `shouldComponentUpdate`로 렌더링 제어하기
 
 리액트 클래스 컴포넌트에서 `shouldComponentUpdate()` 메서드를 오버라이드하면
 
@@ -81,3 +81,23 @@ this.state.liked = true; // 잘못된 접근
         return false; // 상태 변화 없으므로 렌더링 하지 않음
     }
 ```
+
+### 방법 2 ✅ `PureComponent`
+
+- `PureComponent`는 `shouldComponentUpdate` 메서드를 자동으로 구현해주는 컴포넌트입니다.
+- 내부적으로 `props`와 `state`의 얕은 비교(shallow comparison)를 통해 리렌더링 여부를 판단합니다.
+
+```
+shouldComponentUpdate(nextProps, nextState, nextContext) {
+    // 얕은 비교를 통해 true 또는 false 반환
+}
+```
+
+### 장점
+
+- 성능 최적화에 유리 (불필요한 리렌더링 방지)
+
+### 단점
+
+- 객체나 배열처럼 참조형 데이터가 있을 경우, 내부 내용이 바뀌었더라도 참조가 같으면 변경을 감지하지 못함
+- 복잡한 구조의 상태 관리에는 적합하지 않을 수 있음

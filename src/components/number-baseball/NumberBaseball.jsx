@@ -78,7 +78,7 @@ const NumberBaseball = () => {
 
     // 입력 필드 값 변경 시 실행
     const onChangeInput = (e) => {
-        // console.log(answer);
+        console.log(answer);
         setValue(e.target.value);
     }
 

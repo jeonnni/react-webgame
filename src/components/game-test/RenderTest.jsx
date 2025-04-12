@@ -1,7 +1,7 @@
-import { Component } from "react";
+import { PureComponent } from "react";
 
 
-class Test extends Component {
+class Test extends PureComponent {
     state = {
         counter:0,
     }
