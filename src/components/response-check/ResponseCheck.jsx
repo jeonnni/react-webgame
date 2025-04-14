@@ -10,6 +10,7 @@ class ResponseCheck extends Component {
         result: [],
     };
 
+    //this.~ 를 생성
     timeout;
     startTime; //시작시간
     endTime; //끝시간
@@ -33,7 +34,6 @@ class ResponseCheck extends Component {
 
         } else if ( state === 'ready' ){
             clearTimeout(this.timeout); //timeout 초기화
-
             this.setState({
                 state: 'waiting',
                 message: '이런! 너무 성급하세요~ 초록색이 된 후에 클릭하세요',
@@ -41,8 +41,8 @@ class ResponseCheck extends Component {
 
         } else if ( state === 'now' ){ // 반응속도 체크
             this.endTime = new Date(); 
-            console.log("측정 시간:", this.endTime - this.startTime);
-            console.log("기존 result:", this.state.result);
+            // console.log("측정 시간:", this.endTime - this.startTime);
+            // console.log("기존 result:", this.state.result);
 
             this.setState(( prevState ) => ({
                 state: 'waiting',
@@ -53,11 +53,22 @@ class ResponseCheck extends Component {
         }
     };
 
+    // 리셋
+    onReset = () => {
+        this.setState({
+            result: [] //null 
+        })
+    }
+
     renderAverage = () => {
         const { result } = this.state;
         return (
             result.length === 0 
-            ? null : <div>평균 시간 : {result.reduce((a,c)=> a+c) / result.length} ms</div>
+                ? null : 
+                    <>
+                        <div>평균 시간 : {result.reduce((a,c)=> a+c) / result.length} ms</div>
+                        <button onClick={this.onReset}>리셋하기</button>
+                    </>
         
         )
     }
