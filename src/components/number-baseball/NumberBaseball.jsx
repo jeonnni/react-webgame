@@ -92,9 +92,17 @@ const NumberBaseball = () => {
             </form>
             <div>시도 : {tries.length}</div>
             <ul>
-                {tries.map((v, i)=>
+                {(()=>{
+                    const array = [];
+                    for(let i =0; i < tries.length; i++){
+                        const v = tries[i];
+                        array.push(<Try key={`${i+1} 차 시도 : `} tryInfo={v}/>);
+                    }
+                    return array;
+                })()};
+                {/* {tries.map((v, i)=>
                     <Try key={`${i+1} 차 시도 : `} tryInfo={v}/>
-                )}
+                )} */}
             </ul>
 
         </>
