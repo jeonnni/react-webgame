@@ -1,0 +1,4 @@
+.computer {
+    width: calc(450px / 3);
+    height: 200px; 
+}

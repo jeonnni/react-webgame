@@ -4,6 +4,7 @@ import RenderTest from './components/game-test/RenderTest';
 import NumberBaseball from './components/number-baseball/NumberBaseball';
 // import ResponseCheck from './components/response-check/ResponseCheck';
 import ResponseCheck from './components/response-check/ResponseCheckHooks';
+import RSP from './components/rsp/RSP';
 
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
     <div>
       {/* <RenderTest/> */}
       {/* <NumberBaseball/> */}
-      <ResponseCheck />
+      <RSP />
     </div>
   );
 }
