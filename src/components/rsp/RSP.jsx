@@ -56,7 +56,8 @@ class RSP extends Component {
     }
 
     onClickBtn = (choice) => {
-            
+        clearInterval(this.interval);
+        const myScore = scores[choice];
     };
 
     render() {
