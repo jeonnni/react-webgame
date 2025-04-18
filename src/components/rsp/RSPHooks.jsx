@@ -28,18 +28,12 @@ const RSPHooks = () => {
     const [imgCoord, setImgCoord] = useState(rspCoords.바위);
     const [isRunning, setIsRunning] = useState(true); //interval을 멈추기 위한 state 
     // const interval = useRef();
-    // // useEffect는 컴포넌트가 처음 화면에 나타날 때 + imgCoord가 바뀔 때마다 실행됨
     // useEffect(()=>{ //componentDidMount,componentDidUpdate 역할 (1:1대응 X)
-    //     console.log('다시 실행')
     //     interval.current = setInterval(changeHand,500);
-
-    //     // 클린업 함수: 이전에 설정된 interval을 정리 (중복 방지용)
     //     return()=>{ //componentWillUnmount 역할
-    //         console.log('종료')
-    //         clearInterval(interval.current); // interval 제거
+    //         clearInterval(interval.current); 
     //     };
-        
-    // },[imgCoord]); // imgCoord가 바뀔 때마다 위 코드 블록이 실행됨
+    // },[imgCoord]);
 
     const changeHand = () => {
         if(imgCoord.toString() === rspCoords.바위){
@@ -50,14 +44,13 @@ const RSPHooks = () => {
             setImgCoord(rspCoords.바위)
         }
     }
-    useInterval(changeHand, isRunning ? 100 : null);
+
+    //isRunning이 false가 되면 interval을 멈추고 true일 때만 동작
+    useInterval(changeHand, isRunning ? 100 : null); 
     
-    //1. 버튼 클릭시 
     const onClickBtn = (choice) => () => {
-        //2. (true)손이 움직이고 있을때 멈춤 
         if(isRunning){ 
-            // 3. (false)로 만들어서 interval을 멈춤
-            setIsRunning(false) 
+            setIsRunning(false) //(false)로 만들어서 interval을 멈춤
             const myScore = scores[choice]; // 내가 고른 손에 해당하는 점수 (가위:1, 바위:0, 보:-1)
             const cpuScore = scores[computerChoice(imgCoord)]; // 컴퓨터의 손에 해당하는 점수 계산
             const diff = myScore - cpuScore; // 내 점수와 컴퓨터 점수의 차이로 승패 결정
@@ -73,8 +66,7 @@ const RSPHooks = () => {
             }
         
             setTimeout(()=>{
-                // 4. 1초 뒤에는 다시 (true) 로 만들어서 interval 재시작
-                setIsRunning(true);
+                setIsRunning(true); //interval 재시작
             }, 1000);
         }
     }
